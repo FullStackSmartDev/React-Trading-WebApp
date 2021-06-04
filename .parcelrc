@@ -1,0 +1,6 @@
+{
+	"transformers": {
+		"*.png": ["@parcel/transformer-raw"]
+	}
+}
+

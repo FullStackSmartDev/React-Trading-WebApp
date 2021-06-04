@@ -1,0 +1,25 @@
+image: node
+
+cache:
+  paths:
+    - node_modules/
+
+prettier:
+  script:
+    - yarn add prettier
+    - yarn check-code
+
+pages:
+  script:
+    - yarn
+    - CI=false yarn build
+    - rm -rf public
+    - mv build public
+    - cp -r dist/datafeeds/ public
+    - cp -r dist/charting_library/ public
+    #- rm public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
